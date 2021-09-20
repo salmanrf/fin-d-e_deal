@@ -1,0 +1,86 @@
+@use "theme";
+@use "mixins";
+
+#search-container {
+  position: relative;
+  height: 640px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background: theme.$color-gray-secondary-2;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    background: theme.$color-gray-secondary;
+
+    span {
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+    }
+  }
+
+  .line {
+    height: 2px;
+    background: theme.$color-gray-primary;
+  }
+
+  // .page-navigation {
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  // }
+}
+
+.search-results {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  padding: 10px;
+  display: flex;
+  background: theme.$color-gray-secondary;
+
+  .cover {
+    width: 95px;
+    height: 125px;
+    margin-right: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info {
+    font-size: 14px;
+    color: white;
+
+    .release-year {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    .cover {
+      width: 140px;
+      height: 185px;
+      margin-right: 10px;
+    }
+
+    .info {
+      font-size: 16px;
+
+      .release-year {
+        font-size: 14px;
+      }
+    }
+  }
+}

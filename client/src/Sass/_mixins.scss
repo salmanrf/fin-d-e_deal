@@ -1,0 +1,183 @@
+@use "theme";
+
+@mixin text-title-uppercase() {
+  font-weight: 700;
+  color: theme.$font-color-gray;
+  text-transform: uppercase;
+}
+
+@mixin flex-row() {
+  display: flex;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin justify-center() {
+  justify-content: center;
+}
+
+@mixin align-center() {
+  align-items: center;
+}
+
+@mixin flex-center-all() {
+  @include justify-center;
+  @include align-center()
+}
+
+@mixin stretch-absolute() {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@mixin bg-gray-secondary-opacity($opacity: 100%) {
+  background: hsl(220, 13%, 18%, $opacity);
+}
+
+@mixin tab-item($background: theme.$color-gray-secondary) {
+  height: 75px;
+  margin-bottom: 5px;
+  display: flex;
+  background: $background;
+
+  .tab-item-cover-image {
+    flex-shrink: 0;
+    width: 155px;
+    height: 75px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .tab-item-information {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    overflow: hidden;
+  }
+
+  .tab-item-title {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tab-item-prices-platform {
+    display: flex;
+  }
+
+  .tab-item-platform {
+    width: 30%;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 2px;
+      width: 16px;
+      height: 16px;
+      color: hsl(221, 12%, 45%);
+    }
+  }
+
+  .tab-item-prices {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .item-discount {
+      align-self: flex-end;
+      margin-right: 5px;
+      padding: 2px;
+      font-size: 10px;
+      text-align: center;
+      background: theme.$color-green;
+    }
+
+    .item-price-base-current {
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+
+    .price-base {
+      font-size: 10px;
+      text-decoration: line-through;
+    }
+
+    .price-current {
+      font-size: 11px;
+    }
+  }
+
+  .tab-item-tags {
+    display: flex;
+    align-items: center;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-right: 5px;
+      font-size: 10px;      
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    & {
+      height: 112px;
+    }
+
+    .tab-item-information {
+      padding: 6px 8px;
+    }
+    
+    .tab-item-cover-image {
+      width: 232px;
+      height: 112px;
+    }
+
+    .tab-item-title {
+      font-size: 16px;
+    }
+
+    .tab-item-platform svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    .tab-item-tags span {
+      font-size: 12px;      
+    }
+
+    .tab-item-prices {
+      .item-discount {
+        margin-right: 8px;
+        padding: 4px;
+        font-size: 14px;
+      }
+  
+      .price-base {
+        font-size: 12px;
+        text-decoration: line-through;
+      }
+  
+      .price-current {
+        font-size: 14px;
+      }
+    }
+  }
+}

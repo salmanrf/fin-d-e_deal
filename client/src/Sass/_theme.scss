@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+$font-main: "IBM Plex Sans", sans-serif;
+$font-form-header: "Bebas Neue", cursive;
+$font-color-gray: hsl(240, 6%, 93%);
+
+$color-gray-primary: hsl(221, 12%, 32%);
+$color-gray-secondary: hsl(220, 13%, 18%);
+$color-gray-secondary-2: hsl(218, 23%, 21%);
+$color-gray-primary-transparent: hsl(221, 12%, 32%, 70%);
+$color-gray-secondary-transparent: hsl(220, 13%, 18%, 70%);
+$color-pink: hsl(0, 100%, 72%);
+$color-yellow: hsl(33, 86%, 70%);
+$color-green: hsl(170, 78%, 36%);
+$color-green-light: hsl(170, 78%, 50%);
+$color-blue: hsl(197, 91%, 36%);
+$shadow-color: hsl(0, 0%, 0%, 40%);
+$text-color-gray: hsl(220, 10%, 36%);
+
+$box-shadow: 0 1px 1px 1px $shadow-color;
+$box-shadow-form: 0 0 4px 4px hsl(0, 0%, 0%, 80%);

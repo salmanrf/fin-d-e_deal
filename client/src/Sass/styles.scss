@@ -1,0 +1,705 @@
+@use "theme";
+@use "mixins";
+@use "carousels";
+@use "user_forms";
+@use "game_page";
+@use "user_page";
+@use "hero_sections";
+@use "search_container";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  background: theme.$color-gray-primary;
+}
+
+body {
+  font: 100% theme.$font-main;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.app {
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main-header {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: theme.$color-gray-primary;
+  box-shadow: theme.$box-shadow;
+  z-index: 12;
+}
+
+.logo {
+  height: 35px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+
+  img {
+    width: 120%;
+    height: 120%;
+  }
+}
+
+.hamburger-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  cursor: pointer;
+
+  div {
+    width: 100%;
+    height: 4px;
+    background: white;
+  }
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: theme.$color-gray-primary;
+  box-shadow: theme.$box-shadow;
+  transition: height 250ms ease-in-out;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.user-menu-item {
+  padding: 12px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .wishlist-count {
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    svg {
+      margin: 0;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+}
+
+.login-signup-btn {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid hsl(0, 0%, 100%, 80%);
+  z-index: -1;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .btn {
+    width: 50%;
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: hsl(0, 0%, 100%, 80%);
+    text-align: center;
+    border: 1px solid hsl(0, 0%, 100%, 80%);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
+
+#logout-btn {
+  width: 100%;
+  align-self: center;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+
+  span {
+    text-align: center;
+  }
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1280px) {
+    & {
+      width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 1366px) {
+    & {
+      width: 60%;
+    }
+  }
+}
+
+.filter-overlay {
+  @include mixins.stretch-absolute;
+  position: absolute;
+  background: theme.$color-gray-primary-transparent;
+  z-index: 0;
+}
+
+#most-popular-games {
+  header {
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    background: none;
+    z-index: 11;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    @include mixins.bg-gray-secondary-opacity(70%);
+    width: 50px;
+    height: 50px;
+    transform: translateX(0);
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .wishlist-count {
+    cursor: pointer;
+
+    div {
+      width: 18px;
+      height: 18px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.section-highlight {
+  margin-top: 20px;
+
+  header {
+    height: 35px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    background: theme.$color-gray-secondary;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      color: theme.$color-pink;
+    }
+
+    span {
+      font-size: 16px;
+      color: white;
+    }
+  }
+}
+
+.popular-game-info {
+  width: 100%;
+  height: 50px;
+  padding: 5px 8px;
+  display: flex;
+  justify-content: space-between;
+  background: theme.$color-gray-secondary;
+
+  .name-genres {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .name {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .genres {
+      font-size: 11px;
+    }
+  }
+
+  .wishlist-count {
+    align-self: center;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    svg {
+      margin-right: 0;
+    }
+  }
+}
+
+.wishlist-count {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    color: theme.$color-pink;
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+  }
+}
+
+.price-highest-lowest {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+
+  div {
+    margin-right: 10px;
+  }
+
+  hr {
+    margin: 3px 0;
+    height: 0;
+    border: none;
+    border-bottom: 1px solid theme.$color-blue;
+  }
+}
+
+.price-highest {
+  span {
+    margin-left: 5px;
+    color: theme.$color-yellow;
+  }
+}
+
+.price-lowest {
+  span {
+    margin-left: 5px;
+    color: theme.$color-green;
+  }
+}
+
+.steam-offers-item-info {
+  height: 50px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: theme.$color-gray-secondary;
+}
+
+.steam-offers-title-genres {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  span {
+    text-align: left;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.steam-offers-item-price {
+  display: flex;
+  align-items: center;
+}
+
+.steam-discount,
+.steam-prices {
+  height: 35px;
+}
+
+.steam-discount {
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: theme.$color-green;
+
+  span {
+    font-size: 18px;
+    color: white;
+  }
+}
+
+.steam-prices {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: theme.$color-gray-secondary-2;
+
+  span {
+    color: white;
+  }
+
+  .base-price {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: white;
+  }
+
+  .current-price {
+    font-size: 14px;
+  }
+}
+
+.humble-offers-item {
+  .carousel-image {
+    position: relative;
+  }
+
+  .wishlist-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 12px;
+    background: white;
+    border: 1px solid black;
+
+    span {
+      color: black;
+      font-weight: 400;
+    }
+  }
+}
+
+.humble-offers-item-info {
+  height: 50px;
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+}
+
+.humble-game-title {
+  position: relative;
+  max-width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  span {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: hsl(220, 10%, 36%);
+  }
+}
+
+.humble-prices {
+  display: flex;
+  align-items: center;
+
+  .humble-discount,
+  .current-price {
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  .current-price {
+    border: 1px solid black;
+    background: white;
+
+    span {
+      color: black;
+      font-size: 12px;
+    }
+  }
+}
+
+.humble-discount {
+  margin-right: 5px;
+  background: theme.$color-green;
+
+  span {
+    font-size: 14px;
+    color: white;
+  }
+}
+
+#other-offers-tabs {
+  margin-top: 20px;
+
+  header {
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    background: theme.$color-gray-secondary;
+    border-bottom: 1px solid theme.$shadow-color;
+
+    span {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+    }
+  }
+}
+
+.retailer-list {
+  height: 30px;
+  display: flex;
+  background: theme.$color-gray-secondary;
+  border-bottom: 1px solid theme.$shadow-color;
+  overflow-y: auto;
+}
+
+.retailer-tab {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 4px 10px;
+  cursor: pointer;
+
+  span {
+    font-size: 16px;
+    color: white;
+  }
+}
+
+.tab-active {
+  background: theme.$color-gray-secondary-2;
+}
+
+#offers-list {
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  background: theme.$color-gray-secondary-2;
+  overflow-y: scroll;
+}
+
+.page-navigation {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: theme.$color-gray-secondary;
+  border-top: 2px solid theme.$color-green;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  span {
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: white;
+  }
+}
+
+.steam-tab-item {
+  @include mixins.tab-item;
+
+  .item-discount {
+    margin-bottom: 3px;
+  }
+}
+
+.humble-tab-item {
+  @include mixins.tab-item($background: hsl(0, 0%, 100%, 90%));
+
+  .tab-item-information {
+    color: theme.$text-color-gray;
+  }
+
+  .tab-item-title {
+    font-weight: 700;
+  }
+
+  .tab-item-prices {
+    .item-discount {
+      padding: 2px 4px;
+      border-radius: 5px;
+      color: white;
+    }
+
+    .price-current {
+      padding: 2px 4px;
+      color: black;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+  }
+
+  .tab-item-tags {
+    font-weight: 500;
+  }
+}
+
+.gog-tab-item {
+  @include mixins.tab-item($background: hsl(0, 0%, 100%, 95%));
+
+  .tab-item-information {
+    color: black;
+  }
+
+  .tab-item-prices {
+    .item-discount {
+      padding: 6px 4px;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 4px;
+      background: hsl(296, 60%, 29%);
+    }
+
+    .price-base {
+      font-size: 11px;
+    }
+
+    .price-current {
+      font-size: 12px;
+    }
+  }
+
+  .tab-item-platform {
+    align-self: flex-end;
+
+    svg {
+      color: theme.$color-gray-primary;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .tab-item-prices {
+      .item-discount {
+        padding: 6px 4px;
+        font-size: 14px;
+      }
+
+      .price-base {
+        font-size: 12px;
+      }
+
+      .price-current {
+        font-size: 14px;
+      }
+    }
+  }
+}

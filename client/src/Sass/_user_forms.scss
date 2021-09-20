@@ -1,0 +1,125 @@
+@use "theme";
+@use "mixins";
+
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: hsl(0, 0%, 0%, 40%);
+  z-index: 15;
+}
+
+.user-forms {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  padding: 75px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-50%);
+  transition: top 300ms ease-in-out;
+  background: theme.$color-gray-secondary;
+  z-index: 16;
+  box-shadow: theme.$box-shadow-form;
+
+  @media screen and (min-width: 720px) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 50%;
+  }
+}
+
+.user-forms .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  
+  svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
+}
+
+.user-forms header {
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-family: theme.$font-form-header;
+  color: white;
+}
+
+.user-forms form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-input {
+    height: 50px;
+    margin-bottom: 15px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    background: theme.$color-gray-primary;     
+
+    .input-icon {
+      width: 35px;   
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: hsl(0, 0%, 100%, 80%);
+      }
+    }
+  }
+
+  input {
+    padding: 4px 6px;
+    font-size: 18px;
+    background: theme.$color-gray-primary;
+    color: hsl(0, 0%, 100%, 80%);
+    border: none;
+    outline: none;
+  }
+}
+
+.user-forms .action-btn {
+  width: 125px;
+  height: 35px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  background: theme.$color-gray-primary;
+  border-radius: 5px;
+  cursor: pointer;
+
+  img {
+    height: 50%;
+    width: auto;
+  }  
+}
+
+.form-validation {
+  margin: 15px 0;
+  padding: 12px;
+  background: hsl(0, 94%, 82%);
+
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    color: hsl(0, 72%, 51%);
+  }
+}
