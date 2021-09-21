@@ -50,7 +50,7 @@ class IgdbDAO {
 
   static fetchIgdbApi(path = "/games", body) {
     return fetch(
-      `https://api.igdb.com/v4${path}`,
+      `https://api.igdb.com/v4${path}`, 
       {
         method: "POST",
         headers: {

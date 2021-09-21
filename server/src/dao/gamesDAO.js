@@ -17,7 +17,6 @@ const {
   flattenOffersItem,
   unflattenOffersItem
 } = require("../utils/object_utils");
-
 class GamesDAO {
   static db = null;
   static Games = null;

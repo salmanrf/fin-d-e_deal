@@ -12,11 +12,10 @@ const port = process.env.PORT || 8000;
 require("dotenv").config();
 
 const redis = new Redis({
-  port: 6379,
-  host: "127.0.0.1"
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD
 });
-
-const stream = redis.scanStream();
 
 (async () => {
   try {
