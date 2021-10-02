@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && touch public/_redirects && echo '/* /index.html 200' >> public/_redirects",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sass": "sass src/Sass:src/css --watch --no-source-map"
