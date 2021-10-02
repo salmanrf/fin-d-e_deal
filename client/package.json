@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "netlify-cli": "^6.9.28",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -17,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && touch public/_redirects && echo '/* /index.html 200' >> public/_redirects",
+    "build": "react-scripts build && touch build/_redirects && echo '/* /index.html 200' >> build/_redirects",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sass": "sass src/Sass:src/css --watch --no-source-map"

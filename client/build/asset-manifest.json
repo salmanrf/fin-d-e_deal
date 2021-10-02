@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d432c2af.chunk.css",
+    "main.js": "/static/js/main.53b64925.chunk.js",
+    "main.js.map": "/static/js/main.53b64925.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7545a8a1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7545a8a1.js.map",
+    "static/js/2.fe3b9be0.chunk.js": "/static/js/2.fe3b9be0.chunk.js",
+    "static/js/2.fe3b9be0.chunk.js.map": "/static/js/2.fe3b9be0.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d432c2af.chunk.css.map": "/static/css/main.d432c2af.chunk.css.map",
+    "static/js/2.fe3b9be0.chunk.js.LICENSE.txt": "/static/js/2.fe3b9be0.chunk.js.LICENSE.txt",
+    "static/media/epicgames.1c4007fe.png": "/static/media/epicgames.1c4007fe.png",
+    "static/media/hero-image.6fb7304b.jpg": "/static/media/hero-image.6fb7304b.jpg",
+    "static/media/loading.97c79e62.svg": "/static/media/loading.97c79e62.svg",
+    "static/media/logo.606ab0d7.png": "/static/media/logo.606ab0d7.png",
+    "static/media/placeholder.bc91dcb7.jpg": "/static/media/placeholder.bc91dcb7.jpg",
+    "static/media/steam.cf805bbd.png": "/static/media/steam.cf805bbd.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7545a8a1.js",
+    "static/js/2.fe3b9be0.chunk.js",
+    "static/css/main.d432c2af.chunk.css",
+    "static/js/main.53b64925.chunk.js"
+  ]
+}
