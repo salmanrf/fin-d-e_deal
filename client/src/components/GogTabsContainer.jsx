@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaSteam, FaApple, FaWindows, FaLinux } from "react-icons/fa";
+import { API_URL } from "../utils/urls";
 
 const GogTabsContainer = ({ page, setIsLastPage }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,7 @@ const GogTabsContainer = ({ page, setIsLastPage }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`http://54.169.122.134:8000/api/v1/games/offers/gog/?page=${page}`)
+    fetch(`${API_URL}/games/offers/gog/?page=${page}`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setGames(offers);

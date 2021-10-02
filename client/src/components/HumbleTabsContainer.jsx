@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaSteam, FaApple, FaWindows, FaLinux } from "react-icons/fa";
 
+import { API_URL } from "../utils/urls";
+
 const HumbleTabsContainer = ({ page, setIsLastPage }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [games, setGames] = useState([]);
@@ -16,9 +18,7 @@ const HumbleTabsContainer = ({ page, setIsLastPage }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(
-      `http://54.169.122.134:8000/api/v1/games/offers/humble-bundle/?page=${page}`
-    )
+    fetch(`${API_URL}/games/offers/humble-bundle/?page=${page}`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setGames(offers);

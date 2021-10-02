@@ -1,6 +1,5 @@
 import { wrapTryCatch } from "./promise_utils";
-
-const API_URL = "http://54.169.122.134:8000/api/v1";
+import { API_URL } from "./urls";
 
 export async function fetchGameById(gameid) {
   const [response, errors] = await wrapTryCatch(

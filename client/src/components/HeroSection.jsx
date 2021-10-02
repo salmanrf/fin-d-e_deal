@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
+import { API_URL } from "../utils/urls";
+
 import logo from "../assets/img/logo.png";
 import heroImg from "../assets/img/hero-image.jpg";
 
@@ -31,7 +33,7 @@ const HeroSection = (props) => {
   }
 
   function submitSearchRecs() {
-    fetch(`http://localhost:8000/api/v1/games/searchrecs/?keyword=${keyword}`)
+    fetch(`${API_URL}/games/searchrecs/?keyword=${keyword}`)
       .then((res) => res.status === 200 && res.json())
       .then(({ recommendations }) => setRecommendations(recommendations))
       .catch(() => null);

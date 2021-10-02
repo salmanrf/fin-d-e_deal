@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaSteam, FaApple, FaWindows, FaLinux } from "react-icons/fa";
 
+import { API_URL } from "../utils/urls";
+
 const SteamTabsContainer = ({ page, setIsLastPage }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [games, setGames] = useState([]);
@@ -16,7 +18,7 @@ const SteamTabsContainer = ({ page, setIsLastPage }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`http://54.169.122.134:8000/api/v1/games/offers/steam/?page=${page}`)
+    fetch(`${API_URL}/games/offers/steam/?page=${page}`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setGames(offers);

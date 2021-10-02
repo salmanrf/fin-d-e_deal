@@ -3,6 +3,8 @@ import { FaHeart } from "react-icons/fa";
 import { Switch, Route } from "react-router-dom";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 
+import { API_URL } from "../utils/urls";
+
 import HeroSection from "../components/HeroSection";
 import Carousel from "../components/Carousel";
 import MostPopularItem from "../components/MostPopularItem";
@@ -131,7 +133,7 @@ const MostPopularGames = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://54.169.122.134:8000/api/v1/games/wishlist`)
+    fetch(`${API_URL}/games/wishlist`)
       .then((res) => res.status === 200 && res.json())
       .then(({ games }) => {
         setGames(games);
@@ -161,7 +163,7 @@ const SteamOffersHighlight = () => {
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
-    fetch("http://54.169.122.134:8000/api/v1/games/offers/steam/?page=1")
+    fetch(`${API_URL}/games/offers/steam/?page=1`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setOffers(offers);
@@ -194,9 +196,7 @@ const HumbleOffersHighlight = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      "http://54.169.122.134:8000/api/v1/games/offers/humble-bundle/?page=1"
-    )
+    fetch(`${API_URL}/games/offers/humble-bundle/?page=1`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => setGames(offers))
       .catch(() => null)
