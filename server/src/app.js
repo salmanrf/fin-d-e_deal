@@ -41,4 +41,6 @@ app.use("/api/v1/users", user_route);
 app.use("/api/v1/auth", auth_route);
 app.use("/", (req, res) => res.sendStatus(404));
 
+app.use((error, req, res) => res.status(500).json({ error: { message: error.message } }));
+
 module.exports = app;
