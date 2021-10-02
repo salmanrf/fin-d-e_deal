@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && touch public/_redirects && echo '/* /index.html 200' >> public/_redirects && echo '/api/* http://54.169.122.134:8000/api/v1/:splat 200!' >> public/_redirects",
+    "build": "react-scripts build && touch public/_redirects && echo '/* /index.html 200' >> public/_redirects && echo '/api/* http://54.169.122.134:8000/api/v1/ 200!' >> public/_redirects",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sass": "sass src/Sass:src/css --watch --no-source-map"
