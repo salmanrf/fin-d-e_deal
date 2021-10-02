@@ -1,8 +1,10 @@
 import { wrapTryCatch } from "./promise_utils";
 
+const API_URL = "http://54.169.122.134:8000/api/v1";
+
 export async function fetchGameById(gameid) {
   const [response, errors] = await wrapTryCatch(
-    fetch(`http://localhost:8000/api/v1/games/igdb/item/${gameid}`)
+    fetch(`${API_URL}/games/igdb/item/${gameid}`)
   );
 
   if (errors) {
@@ -20,7 +22,7 @@ export async function fetchGameById(gameid) {
 
 export async function fetchGameCompanies(companies = []) {
   const [response, errors] = await wrapTryCatch(
-    fetch(`http://localhost:8000/api/v1/games/igdb/companies`, {
+    fetch(`${API_URL}/games/igdb/companies`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +50,7 @@ export async function fetchGameCompanies(companies = []) {
 // websites is a array of object, each must have url and category as properties
 export async function fetchGameStores(gameid, websites) {
   const [response, errors] = await wrapTryCatch(
-    fetch(`http://localhost:8000/api/v1/games/igdb/item/${gameid}/stores`, {
+    fetch(`${API_URL}/games/igdb/item/${gameid}/stores`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,9 +74,7 @@ export async function fetchGameStores(gameid, websites) {
 
 export async function fetchSearchGames(keyword, page) {
   const [response, errors] = await wrapTryCatch(
-    fetch(
-      `http://localhost:8000/api/v1/games/search/?keyword=${keyword}&page=${page}`
-    )
+    fetch(`${API_URL}/games/search/?keyword=${keyword}&page=${page}`)
   );
 
   if (errors) {
@@ -92,7 +92,7 @@ export async function fetchSearchGames(keyword, page) {
 
 export async function fetchAddRemoveWishlist(gameid, token) {
   const [response, errors] = await wrapTryCatch(
-    fetch("http://localhost:8000/api/v1/games/wishlist", {
+    fetch(`${API_URL}/games/wishlist`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

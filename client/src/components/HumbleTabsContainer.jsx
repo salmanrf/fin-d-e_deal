@@ -17,13 +17,15 @@ const HumbleTabsContainer = ({ page, setIsLastPage }) => {
     setIsLoading(true);
 
     fetch(
-      `http://localhost:8000/api/v1/games/offers/humble-bundle/?page=${page}`
+      `http://54.169.122.134:8000/api/v1/games/offers/humble-bundle/?page=${page}`
     )
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setGames(offers);
         setIsLoading(false);
-      });
+      })
+      .catch(() => null)
+      .finally(() => setIsLoading(false));
   }, [page]);
 
   return (

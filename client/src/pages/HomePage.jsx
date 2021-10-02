@@ -131,12 +131,13 @@ const MostPopularGames = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/v1/games/wishlist`)
+    fetch(`http://54.169.122.134:8000/api/v1/games/wishlist`)
       .then((res) => res.status === 200 && res.json())
       .then(({ games }) => {
         setGames(games);
         setIsLoading(false);
-      });
+      })
+      .catch(() => null);
   }, []);
 
   return (
@@ -160,12 +161,13 @@ const SteamOffersHighlight = () => {
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/games/offers/steam/?page=1")
+    fetch("http://54.169.122.134:8000/api/v1/games/offers/steam/?page=1")
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setOffers(offers);
         setIsLoading(false);
-      });
+      })
+      .catch(() => null);
   }, []);
 
   return (
@@ -192,7 +194,9 @@ const HumbleOffersHighlight = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/games/offers/humble-bundle/?page=1")
+    fetch(
+      "http://54.169.122.134:8000/api/v1/games/offers/humble-bundle/?page=1"
+    )
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => setGames(offers))
       .catch(() => null)

@@ -1,8 +1,10 @@
 import { wrapTryCatch } from "./promise_utils";
 
+const API_URL = "http://54.169.122.134:8000/api/v1";
+
 export async function fetchCurrentUser(token) {
   const [response, errors] = await wrapTryCatch(
-    fetch("http://localhost:8000/api/v1/users/current", {
+    fetch(`${API_URL}/users/current`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -26,7 +28,7 @@ export async function fetchCurrentUser(token) {
 
 export async function fetchCurrentUserWishlist(token) {
   const [response, errors] = await wrapTryCatch(
-    fetch("http://localhost:8000/api/v1/users/current/wishlists", {
+    fetch(`${API_URL}/users/current/wishlists`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

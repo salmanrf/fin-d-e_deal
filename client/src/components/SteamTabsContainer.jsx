@@ -16,12 +16,14 @@ const SteamTabsContainer = ({ page, setIsLastPage }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`http://localhost:8000/api/v1/games/offers/steam/?page=${page}`)
+    fetch(`http://54.169.122.134:8000/api/v1/games/offers/steam/?page=${page}`)
       .then((res) => res.status === 200 && res.json())
       .then(({ offers }) => {
         setGames(offers);
         setIsLoading(false);
-      });
+      })
+      .catch(() => null)
+      .finally(() => setIsLoading(false));
   }, [page]);
 
   return (
