@@ -304,10 +304,14 @@ class GamesDAO {
     res = await res.json(res);
     const games = scrapeSteamOffers(res["results_html"]);
 
-    this.redis.sadd(
-      `offers:steam:${page}`,
-      games.map(({ id }) => `steam:${id}`)
-    );
+    const expiresIn = 60 * 60 * 12;
+
+    this.redis
+      .sadd(
+        `offers:steam:${page}`,
+        games.map(({ id }) => `steam:${id}`)
+      )
+      .then(() => this.redis.expire(`offers:gog:${requestPage}`, expiresIn));
     games.forEach((g) => this.cacheOffersItem("steam", g));
 
     return games;
@@ -334,10 +338,14 @@ class GamesDAO {
     res = await res.json();
     const games = formatHumbleOffers(res);
 
-    this.redis.sadd(
-      `offers:humble-bundle:${requestPage}`,
-      games.map(({ id }) => `humble-bundle:${id}`)
-    );
+    const expiresIn = 60 * 60 * 12;
+
+    this.redis
+      .sadd(
+        `offers:humble-bundle:${requestPage}`,
+        games.map(({ id }) => `humble-bundle:${id}`)
+      )
+      .then(() => this.redis.expire(`offers:gog:${requestPage}`, expiresIn));
     games.forEach((g) => this.cacheOffersItem("humble-bundle", g));
 
     return games;
@@ -360,10 +368,14 @@ class GamesDAO {
     res = await res.json();
     const games = formatGogOffers(res);
 
-    this.redis.sadd(
-      `offers:gog:${requestPage}`,
-      games.map(({ id }) => `gog:${id}`)
-    );
+    const expiresIn = 60 * 60 * 12;
+
+    this.redis
+      .sadd(
+        `offers:gog:${requestPage}`,
+        games.map(({ id }) => `gog:${id}`)
+      )
+      .then(() => this.redis.expire(`offers:gog:${requestPage}`, expiresIn));
     games.forEach((g) => this.cacheOffersItem("gog", g));
 
     return games;
